@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>CHARACTER MBTI</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <style> 
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap'); 
+        </style>
+
+        <style>
+            * {
+                font-family: 'Noto Sans KR', sans-serif;
+            }
+
+            body {
+                padding: 0;
+                margin: 0;	
+                width: 100vw;
+                height: 100vh;
+                background-color: black;
+            }
+
+            .container {
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Main page */
+
+            #main {
+                background-color: black;
+                width: 100%;
+                text-align: center;
+                display: none;
+            }
+
+            #desc {
+                position: absolute;
+                width: 65%;
+                height: auto;
+                bottom: 300px;
+                word-wrap: break-word;
+                font-size: 30px;
+                line-height: 40px;
+                color: #FFFFFF;
+                text-align: center;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-shadow: 3px 3px 1px black;
+            }
+
+            /* Start button */
+
+            #start{
+                position: absolute;
+                width:300px;
+                height: 90px;
+                bottom: 150px;
+                padding: 5px;
+                font-size: 50px;
+                font-weight: 700;
+                background-color: red;
+                color: white;
+                margin: 0;
+                border: 0;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            #start:hover {
+                background-color: white;
+                color: black;
+            }
+
+            /* Restart button */
+
+            #restart{
+                width:200px;
+                height: 50px;
+                padding: 5px;
+                font-size: 30px;
+                font-weight: 700;
+                background-color: white;
+                color: black;
+                margin: 0;
+                border: 0;
+            }
+
+            #restart:hover {
+                background-color: red;
+                color: white;
+            }
+
+            /* Answer page */
+
+            #qna {
+                display: none;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100vh;
+                padding: 10px;
+            }
+
+            .answerList {
+                background-color: black;
+                display: inline-block;
+                width: 49%;
+                height: 99vh;
+                margin: 8px;
+                padding: 20px;
+                border: 2px solid black;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -webkit-filter: grayscale(100%);
+                filter: grayscale(100%);
+            }
+
+            .answerList:hover, .answerList:focus {
+                --b:2px;
+                --c: red;
+                --w:120px;
+                border:var(--b) solid transparent;
+                background:
+                    linear-gradient(var(--c),var(--c)) top left,
+                    linear-gradient(var(--c),var(--c)) top left,
+                    linear-gradient(var(--c),var(--c)) bottom left,
+                    linear-gradient(var(--c),var(--c)) bottom left,
+                    linear-gradient(var(--c),var(--c)) top right,
+                    linear-gradient(var(--c),var(--c)) top right,
+                    linear-gradient(var(--c),var(--c)) bottom right,
+                    linear-gradient(var(--c),var(--c)) bottom right;
+                background-size:var(--b) var(--w),var(--w) var(--b);
+                background-origin:border-box;
+                background-repeat:no-repeat;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -webkit-filter: grayscale(0%);
+                filter: grayscale(0%);
+            }
+
+            .choose {
+                width: 100%;
+                height: 100%;
+                background-size: cover; 
+            }
+
+            #choose_1 {
+                background-image: url('img_1.png');
+            }
+
+            #choose_2 {
+                background-image: url('img_2.png');
+            }
+
+            #choose_3 {
+                background-image: url('img_3.png');
+            }
+
+            #choose_4 {
+                background-image: url('img_4.png');
+            }
+
+            #choose_5 {
+                background-image: url('img_5.png');
+            }
+
+            #choose_6 {
+                background-image: url('img_6.png');
+            }
+
+            #choose_7 {
+                background-image: url('img_7.png');
+            }
+
+            #choose_8 {
+                background-image: url('img_8.png');
+            }
+
+            #choose_9 {
+                background-image: url('img_9.png');
+            }
+
+            #choose_10 {
+                background-image: url('img_10.png');
+            }
+
+            #choose_11 {
+                background-image: url('img_11.png');
+            }
+
+            #choose_12 {
+                background-image: url('img_12.png');
+            }
+
+            #choose_13 {
+                background-image: url('img_13.png');
+            }
+
+            #choose_14 {
+                background-image: url('img_14.png');
+            }
+
+            #choose_15 {
+                background-image: url('img_15.png');
+            }
+
+            #choose_16 {
+                background-image: url('img_16.png');
+            }
+
+            #choose_17 {
+                background-image: url('img_17.png');
+            }
+
+            #choose_18 {
+                background-image: url('img_18.png');
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .img-result {
+                width: 60%;
+                height: auto;
+                vertical-align: middle;
+            }
+
+            #result{
+                display: none;
+                background-color: black;
+                width: 100%;
+                text-align: center;
+                color: white;
+            }
+
+            .resultname {
+                font-size: 35px;
+                margin: 20px;
+            }
+
+            .resultDesc {
+                font-size: 30px;
+                margin: 20px;
+            }
+
+            /* Fade animation */
+
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+
+            @-webkit-keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+
+            @-webkit-keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+
+            .fadeIn {
+                animation: fadeIn;
+                animation-duration: 0.5s;
+            }
+
+            .fadeOut {
+                animation: fadeOut;
+                animation-duration: 0.5s;
+            }
+
+            /* Loader */
+
+            .loader{
+                display: block;
+                position: relative;
+                height: 100vh;
+                width: 100vw;
+                background: black;
+                color: red;
+                overflow: hidden;
+            }
+            .loader::before{
+                content: '';
+                background: red;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 0;
+                height: 100%;
+                animation: loading 3s linear;
+                animation-iteration-count: 1;
+            }
+            .loader:after{
+                content: '';
+                position: absolute;
+                left: 10%;
+                top: 75%;
+                width: 100%;
+                height: 100%;
+                text-align: left;
+                vertical-align: middle;
+                font-size: 10em;
+                font-weight: 700;
+                line-height: 32px;
+                color: red;
+                mix-blend-mode: difference;
+                animation: percentage 3s linear;
+                animation-iteration-count: 1;
+            }
+            
+            @keyframes loading {
+                0% { width: 0 }
+                100% { width: 100% }
+            }
+            @keyframes percentage {
+                0% { content: "0%"}
+                20% { content: "20%"}
+                30% { content: "30%"}
+                35% { content: "35%"}
+                40% { content: "40%"}
+                45% { content: "45%"}
+                50% { content: "50%"}
+                55% { content: "55%"}
+                60% { content: "60%"}
+                70% { content: "70%"}
+                95% { content: "95%"}
+                96% { content: "100%"}
+                100% { content: "100%"}
+            }
+
+            /* Falling images animation */
+
+            section{
+                position:relative ;
+                width:100%;
+                height:100vh;
+                overflow:hidden ;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+            }
+
+            .image_main{
+                width: 200px;
+                height: auto;
+            }
+
+            section .set{
+                position:absolute ;
+                width:100%;
+                height:100%;
+                top:0;
+                left:0;
+                pointer-events:none;
+                filter: blur(1px);
+            }
+            section .set div{
+                position:absolute ;
+                display:block ;
+            }
+            section .set div:nth-child(1){
+                left:20%;
+                animation:animate 15s linear infinite ;
+                animation-delay:-7s;
+            }
+            section .set div:nth-child(2){
+                left:50%;
+                animation:animate 20s linear infinite ;
+                animation-delay:-5s;
+            }
+            section .set div:nth-child(3){
+                left:70%;
+                animation:animate 20s linear infinite ;
+                animation-delay:0s;
+            }
+            section .set div:nth-child(4){
+                left:0%;
+                animation:animate 15s linear infinite ;
+                animation-delay:-5s;
+            }
+            section .set div:nth-child(5){
+                left:85%;
+                animation:animate 18s linear infinite ;
+                animation-delay:-10s;
+            }
+            section .set div:nth-child(6){
+                left:20%;
+                animation:animate 15s linear infinite ;
+                animation-delay:-7s;
+            }
+            section .set div:nth-child(7){
+                left:0%;
+                animation:animate 12s linear infinite ;
+            }
+
+            section .set div:nth-child(8){
+                left:60%;
+                animation:animate 15s linear infinite ;
+            }
+
+            .set2{
+                transform:scale(2);
+                filter:blur(2px);
+            }
+
+            .set3{
+                transform:scale(0.8);
+                filter:blur(4px);
+            }
+
+            @keyframes animate{
+                0%{
+                    opacity:0;
+                    top: -10%;
+                    transform:translateX(20px) rotate(0deg);
+                }
+                10%{
+                    opacity:1;
+                }
+                20%{
+                    transform:translateX(-20px) rotate(8deg);
+                }
+                40%{
+                    transform:translateX(-20px) rotate(0deg);
+                }
+                60%{
+                    transform:translateX(20px) rotate(-8deg);
+                }
+                80%{
+                    transform:translateX(-20px) rotate(0deg);
+                }
+                100%{
+                    top: 110%;
+                    transform:translateX(-20px) rotate(8deg);
+                }
+            }
+            
+            /* Cursor */
+            
+            #pointer-dot {
+                left: 0;
+                top: 0;
+                width: 0;
+                height: 0;
+                border: 5px solid #ff0000;
+                position: fixed;
+                border-radius: 10px;
+                z-index: 101;
+                pointer-events: none;
+                transition: border-color 0.5s;
+                mix-blend-mode: difference;
+            }
+
+            #pointer-ring {
+                left: 0;
+                top: 0;
+                width: 0;
+                height: 0;
+                padding: 20px;
+                border: 5px solid #ff0000;
+                position: fixed;
+                border-radius: 100px;
+                z-index: 102;
+                pointer-events: none;
+                mix-blend-mode: difference;
+            }
+
+            html {
+                cursor: none !important;
+            }
+
+            a {
+                cursor: none !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="invertedcursor"></div>
+
+        <div class="container" >
+            <section id="loader">
+                <div class="loader"></div>
+            </section>
+            
+            <section id="main">
+                    <div class="set">
+                        <div class="image_main"><img src="main_0.png"></div>
+                        <div class="image_main"><img src="main_1.png"></div>
+                        <div class="image_main"><img src="main_2.png"></div>
+                        <div class="image_main"><img src="main_3.png"></div>
+                        <div class="image_main"><img src="main_4.png"></div>
+                        <div class="image_main"><img src="main_5.png"></div>
+                        <div class="image_main"><img src="main_6.png"></div>
+                        <div class="image_main"><img src="main_7.png"></div>
+                    </div>
+                    <div class="set set2">
+                        <div class="image_main"><img src="main_9.png"></div>
+                        <div class="image_main"><img src="main_8.png"></div>
+                        <div class="image_main"><img src="main_7.png"></div>
+                        <div class="image_main"><img src="main_6.png"></div>
+                        <div class="image_main"><img src="main_5.png"></div>
+                        <div class="image_main"><img src="main_4.png"></div>
+                        <div class="image_main"><img src="main_3.png"></div>
+                        <div class="image_main"><img src="main_2.png"></div>
+                    </div>
+                    <div class="set set3">
+                        <div class="image_main"><img src="main_0.png"></div>
+                        <div class="image_main"><img src="main_2.png"></div>
+                        <div class="image_main"><img src="main_4.png"></div>
+                        <div class="image_main"><img src="main_6.png"></div>
+                        <div class="image_main"><img src="main_8.png"></div>
+                        <div class="image_main"><img src="main_9.png"></div>
+                        <div class="image_main"><img src="main_7.png"></div>
+                        <div class="image_main"><img src="main_5.png"></div>
+                    </div>
+                  
+                <div>
+                    <div id="desc"></div>
+                    <br><br><br><br><br><br><br><br>
+                    <input type="button" value="START" id="start" onclick="begin()">
+                </div>
+            </section>
+
+            <section id="qna">
+                <div class="qBox"></div>
+                <div class="answerBox"> </div>
+            </section>
+
+            <section id="result">
+                <div class="resultname"> </div>
+                <div id="resultImg"> </div>
+                <div class="resultDesc"></div>
+                <br>
+                <input type="button" value="RESTART" id="restart" onclick="location.reload()">    
+            </section>
+
+            <script src="./pointer.js"></script>
+
+            <script>
+                init_pointer({
+                pointerColor: "#ff0000"
+                })
+
+                // loading function
+                const myTimeout = setTimeout(loading, 3000);
+                function loading(){
+                    loader.style.WebkitAnimation = "fadeOut 1s";
+                    loader.style.animation = "fadeOut 1s";
+                    setTimeout(() => {
+                        main.style.WebkitAnimation = "fadeIn 1s";
+                        main.style.animation = "fadeIn 1s";
+                        setTimeout(() => {
+                            loader.style.display = "none";
+                            main.style.display =  "block"
+                        }, 450)
+                    })
+                }
+
+                $(function() {
+                    var rainingPhrase = $(".card");
+                    var tl = new TimelineLite();
+
+                    tl.add(TweenLite.set(rainingPhrase, {bottom: 250}));
+                    tl.add(TweenLite.to(rainingPhrase, 2, {bottom:5}));
+                });
+
+                // text animation
+                document.addEventListener('DOMContentLoaded',function(event){
+                var dataText = [ "<h3>여행 유형 테스트</h3><br><p>사람의 눈이 이미지를 인식하는데 13밀리초밖에 걸리지 않습니다.<br>이미지 선택을 기반으로 당신에게 적합한 여행지를 찾아드립니다.</p>"];
+                function typeWriter(text, i, fnCallback) {
+        
+                    if (i < (text.length)) {
+                        document.querySelector("#desc").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
+                        setTimeout(function() {
+                            typeWriter(text, i + 1, fnCallback)
+                        }, 100);
+                    }
+                    
+                    else if (typeof fnCallback == 'function') {
+                        setTimeout(fnCallback, 700);
+                    }
+                }
+                function StartTextAnimation(i) {
+                    if (typeof dataText[i] == 'undefined'){
+                        setTimeout(function() {
+                        StartTextAnimation(0);
+                        }, 20000);
+                    }
+                    if (i < dataText[i].length) {
+                        typeWriter(dataText[i], 0, function(){
+                            StartTextAnimation(i + 1);
+                        });
+                    }
+                }
+                StartTextAnimation(0);
+                });                
+
+                // data list
+
+                // [0, 1, 2, 3] / [4, 5, 6, 7]
+                // [0, 1, 4, 5] / [2, 3, 6, 7]
+                // [0, 2, 4, 6] / [1, 3, 5, 7]
+
+                // ENGLAND 0
+                // SWITZERLAND 1
+                // RUSSIA 2
+                // FINLAND 3
+                // SINGAPURE 4
+                // MALDIVES 5
+                // SPAIN 6
+                // INDONESIA 7
+
+                const qnaList = [
+                {
+                    a: [ { answer: '<div class="choose" id="choose_1"></div>', type: [0, 1, 2, 3] },
+                    { answer: '<div class="choose" id="choose_2"></div>', type: [4, 5, 6, 7] }]
+                },
+                {
+                    a: [ { answer: '<div class="choose" id="choose_3"></div>', type: [0, 1, 4, 5] },
+                    { answer: '<div class="choose" id="choose_4"></div>', type: [2, 3, 6, 7] }]
+                },
+                {
+                    a: [ { answer: '<div class="choose" id="choose_5"></div>', type: [0, 2, 4, 6] },
+                    { answer: '<div class="choose" id="choose_6"></div>', type: [1, 3, 5, 7] }]
+                },
+                {
+                    a: [ { answer: '<div class="choose" id="choose_7"></div>', type: [0, 1, 2, 3] },
+                    { answer: '<div class="choose" id="choose_8"></div>', type: [4, 5, 6, 7] }]
+                },
+                {
+                    a: [ { answer: '<div class="choose" id="choose_9"></div>', type: [0, 1, 4, 5] },
+                    { answer: '<div class="choose" id="choose_10"></div>', type: [2, 3, 6, 7] }]
+                },
+                {
+                    a: [ { answer: '<div class="choose" id="choose_11"></div>', type: [0, 2, 4, 6] },
+                    { answer: '<div class="choose" id="choose_12"></div>', type: [1, 3, 5, 7] }]
+                },
+                {
+                    a: [ { answer: '<div class="choose" id="choose_13"></div>', type: [0, 1, 2, 3] },
+                    { answer: '<div class="choose" id="choose_14"></div>', type: [4, 5, 6, 7] }]
+                },
+                {
+                    a: [ { answer: '<div class="choose" id="choose_15"></div>', type: [0, 1, 4, 5] },
+                    { answer: '<div class="choose" id="choose_16"></div>', type: [2, 3, 6, 7] }]
+                },
+                {
+                    a: [ { answer: '<div class="choose" id="choose_17"></div>', type: [0, 2, 4, 6] },
+                    { answer: '<div class="choose" id="choose_18"></div>', type: [1, 3, 5, 7] }]
+                }]
+                
+                // result list
+
+                const infoList = [
+                { name: '당신에게 어울리는 여행지는 <b>영국</b>입니다.', desc: ''},
+                { name: '당신에게 어울리는 여행지는 <b>스위스</b>입니다.', desc: '' },
+                { name: '당신에게 어울리는 여행지는 <b>러시아</b>입니다.', desc: ''},
+                { name: '당신에게 어울리는 여행지는 <b>핀란드</b>입니다.', desc: ''},
+                { name: '당신에게 어울리는 여행지는 <b>싱가포르</b>입니다.', desc: ''},
+                { name: '당신에게 어울리는 여행지는 <b>몰디브</b>입니다.', desc: ''},
+                { name: '당신에게 어울리는 여행지는 <b>스페인</b>입니다.', desc: ''},
+                { name: '당신에게 어울리는 여행지는 <b>인도네시아</b>입니다.', desc: ''}
+                ]
+
+                //main functions
+
+                const loader = document.querySelector("#loader");
+                const main = document.querySelector("#main");
+                const qna = document.querySelector("#qna");
+                const result = document.querySelector("#result");
+
+                // result array
+
+                const endPoint = 9;
+                const select = [0, 0, 0, 0, 0, 0, 0, 0];
+
+                //show result
+
+                function calResult(){
+                    console.log(select);
+                    var result = select.indexOf(Math.max(...select)); 
+                    return result;
+                }
+
+                //set result
+
+                function setResult(){
+                    let point = calResult();
+                    const resultName = document.querySelector('.resultname');
+                    resultName.innerHTML = infoList[point].name;
+
+                    var resultImg = document.createElement('img');
+                    const imgDiv = document.querySelector('#resultImg');
+                    var imgURL = 'image_' + point + '.png';
+                    resultImg.src = imgURL;
+                    resultImg.alt = point;
+                    resultImg.classList.add('img-result');
+
+                    imgDiv.appendChild(resultImg);
+
+                    const resultDesc = document.querySelector('.resultDesc');
+                    resultDesc.innerHTML = infoList[point].desc;
+                }
+
+                function goResult(){
+                    qna.style.WebkitAnimation = "fadeOut 1s";
+                    qna.style.animation = "fadeOut 1s";
+                    setTimeout(() => {
+                        result.style.WebkitAnimation = "fadeIn 1s";
+                        result.style.animation = "fadeIn 1s";
+                        setTimeout(() => {
+                            qna.style.display = "none";
+                            result.style.display =  "block"
+                        }, 450)})
+                        setResult();
+                }
+
+                function addAnswer(answerText, qIdx, idx){
+                    var a = document.querySelector('.answerBox');
+                    var answer = document.createElement('button');
+                    // answer.style.backgroundColor = 'pink';
+                    answer.classList.add('answerList');
+                    answer.classList.add('fadeIn');
+
+                    a.appendChild(answer);
+                    answer.innerHTML = answerText;
+
+                    answer.addEventListener("click", function(){
+                        var children = document.querySelectorAll('.answerList');
+                        for(let i = 0; i < children.length; i++){
+                            children[i].disabled = true;
+                            children[i].style.WebkitAnimation = "fadeOut 0.5s";
+                            children[i].style.animation = "fadeOut 0.5s";
+                        }
+                        setTimeout(() => {
+                            var target = qnaList[qIdx].a[idx].type;
+                            for(let i = 0; i < target.length; i++) {
+                                select[target[i]] += 1;
+                            }
+                            for(let i = 0; i < children.length; i++) {
+                                children[i].style.display = 'none';
+                            }
+                            goNext(++qIdx);
+                        }, 450)
+                    },false );
+                }
+
+
+
+                function goNext(qIdx) {
+                    if(qIdx === endPoint){
+                        goResult();
+                        return;
+                    }
+                    var q = document.querySelector('.qBox');
+                    for(let i in qnaList[qIdx].a){
+                        addAnswer(qnaList[qIdx].a[i].answer, qIdx, i);
+                    }
+                }
+
+                // function for start button
+                function begin(){
+                    main.style.WebkitAnimation = "fadeOut 1s";
+                    main.style.animation = "fadeOut 1s";
+                    setTimeout(() => {
+                        qna.style.WebkitAnimation = "fadeIn 1s";
+                        qna.style.animation = "fadeIn 1s";
+                        setTimeout(() => {
+                            main.style.display = "none";
+                            qna.style.display = "block";
+                        }, 450);
+                        let qIdx = 0;
+                        goNext(qIdx);
+                    }, 450)
+                }
+                
+
+            </script>
+        </div>
+    </body>
+</html>
